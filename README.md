@@ -8,7 +8,7 @@ Features:
 <br><br>
 -10,000 word english dictionary from another repository<br>
 -Dictionary is under half a MegaByte(MB)<br>
--Finds most combinations depending on a number of factors<br>
+-Finds all combos based on dictionary file<br>
 -It takes a few seconds to show results<br>
 -Unlimited searches<br>
 -Works online and offline<br>
@@ -16,7 +16,7 @@ Features:
 <br><br>
 Limitations:
 <br><br>
--It is limited to 15 characters for each search. You can always remove this limitation.<br>
+-It is limited to 10 characters for each search. You can always remove this limitation.<br>
 <br><br>
 ![preview](https://github.com/lexterror/JS-Anagram-Finder/assets/16135535/d2426f26-089c-45d3-a80f-5401607e83c4)
 <br>
