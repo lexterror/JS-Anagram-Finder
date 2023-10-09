@@ -1,4 +1,5 @@
 # JS-Anagram-Finder
+![iconx](https://github.com/lexterror/JS-Anagram-Finder/assets/16135535/ddc26b03-b9aa-40df-8a49-32e93d536601)
 Anagram Finder in JavaScript
 <br><br>
 Live demo: https://js-anagram-finder.sourceforge.io/index.html
@@ -17,5 +18,5 @@ Limitations:
 <br><br>
 -It is limited to 15 characters for each search. You can always remove this limitation.<br>
 <br><br>
-![preview](https://github.com/lexterror/JS-Anagram-Finder/assets/16135535/da9d28e9-9ce3-4ba8-b556-d28415ea941f)
+![preview](https://github.com/lexterror/JS-Anagram-Finder/assets/16135535/d2426f26-089c-45d3-a80f-5401607e83c4)
 <br>
