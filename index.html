@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<script src="jquery-3.6.3.min.js"></script>
+<script src="englishdic.js"></script>
+<meta charset="UTF-8">
+<title>Js-Anagram-Finder</title>
+<html>
+<body>
+<div class="form-group fg--search" style="position:absolute;left:0;right:0;margin: 0 auto;">
+  <input type="text" id="searchanagrams" class="input" placeholder="search">
+  <button onclick="alexsgetanagrams() "><i class="fa fa-search"></i></button>
+</div>
+<div id="results" style="font-family:font;text-align:center;border-radius: 5px; background: #030303; color:#B0C212;width:900px;height:600px;left:0;right:0;overflow-y:scroll;overflow-x:hidden;font-size:24px;margin: 0 auto;position:absolute;top:100px;">
+</div>
+
+
+
+
+</body>
+</html>
+
+<script>
+
+
+
+var pushit = []
+var excel = ""
+var start = "";
+var timeTaken = ""
+var getallwords = ""; 
+var identifiedWords =[]
+var myword = "";
+
+function alexsgetanagrams() {
+outputz = "";
+$("#results").html("Please Wait....");
+setTimeout(clint, 1000);
+
+function clint() {
+
+start = Date.now();
+
+
+
+
+
+getallwords = $("#searchanagrams").val();
+var barnone = "";
+
+if (getallwords.length < 11 && getallwords.length > 4)
+{
+
+/*
+const permutator = (inputArr) => {
+  let result = [];
+
+  const permute = (arr, m = []) => {
+    if (arr.length === 0) {
+      result.push(m)
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        let curr = arr.slice();
+        let next = curr.splice(i, 1);
+        permute(curr.slice(), m.concat(next))
+     }
+   }
+ }
+
+ permute(inputArr)
+
+ return result;
+} */
+function removeDuplicates(arr) { 
+    return arr.filter((item, 
+        index) => arr.indexOf(item) === index); 
+} 
+myword = getallwords.toString().toLowerCase();
+var mywordlength = myword.length;
+sortedPermutations(myword);
+var getoutput = outputz.toString().replaceAll(",","");
+//var getanagrams2 = reverseString(getanagrams.toString());
+//$("#tet").html(outputz);
+pushit = [];
+
+for (i = 0; i < dictionaryx.length; i++)
+{
+var mylo = myword.length + 1;
+if (dictionaryx[i].length < 9)
+if (dictionaryx[i].length > 2)
+if (getoutput.includes(dictionaryx[i]))
+pushit.push(dictionaryx[i]);
+
+}
+
+pushit.sort(function(a, b){return b.length - a.length});
+
+var finalstring = pushit.toString().replaceAll(",", "<br>");
+
+
+
+//$("#tet").html(newstring);
+var addlinebreak = "<br>" + pushit.toString();
+timeTaken = (Date.now() - start) / 1000;
+
+var title = "*** " + myword + " ***<br><br>";
+
+
+$("#results").html("Time taken.... " + timeTaken + " seconds<br><br>" + title + finalstring);
+}
+
+if (getallwords.length > 10)
+{
+timeTaken = (Date.now() - start) / 1000;
+var sorry = "Sorry, it needs to be shorter than 11 characters :("
+$("#results").html("Time taken.... " + timeTaken + " seconds<br>" + sorry);
+}
+if (getallwords.length < 5)
+{
+timeTaken = (Date.now() - start) / 1000;
+var sorry = "Sorry, you need more than 4 characters :("
+$("#results").html("Time taken.... " + timeTaken + " seconds<br>" + sorry);
+}
+}
+}
+
+// JavaScript Program to print all permutations 
+// of a string in sorted order. 
+ 
+/* The following function is needed for the sort method */
+function compare (a, b) 
+{ 
+    return a.charCodeAt(0) - b.charCodeAt(0);
+}
+ 
+// This function finds the index of the smallest character 
+// which is greater than 'first' and is present in str[l..h] 
+function findCeil (str, first, l, h) 
+{ 
+    // initialize index of ceiling element 
+    let ceilIndex = l; 
+ 
+    // Now iterate through rest of the elements and find 
+    // the smallest character greater than 'first' 
+    for (let i = l+1; i <= h; i++) 
+    if (str[i] > first && str[i] < str[ceilIndex]) 
+            ceilIndex = i; 
+ 
+    return ceilIndex; 
+} 
+var outputz = "" 
+// Print all permutations of str in sorted order 
+function sortedPermutations ( str) 
+{ 
+    // Get size of string 
+    let size = str.length; 
+ 
+    // Sort the string in increasing order 
+    str = str.split("");
+    str.sort(compare);
+ 
+    // Print permutations one by one 
+    let isFinished = false; 
+    while ( ! isFinished ) 
+    { 
+        // print this permutation 
+         outputz += str;
+ 	
+        // Find the rightmost character which is 
+        // smaller than its next character. 
+        // Let us call it 'first char' 
+        let i; 
+        for ( i = size - 2; i >= 0; --i ) 
+        if (str[i] < str[i+1]) 
+            break; 
+ 
+        // If there is no such character, all are 
+        // sorted in decreasing order, means we 
+        // just printed the last permutation and we are done. 
+        if ( i == -1 ) 
+            isFinished = true; 
+        else
+        { 
+            // Find the ceil of 'first char' in 
+            // right of first character. 
+            // Ceil of a character is the smallest 
+            // character greater than it 
+            let ceilIndex = findCeil( str, str[i], i + 1, size - 1 ); 
+ 
+            // Swap first and second characters 
+            let temp = str[i];
+            str[i] = str[ceilIndex];
+            str[ceilIndex] = temp;
+ 
+            // Sort the string on right of 'first char'
+            str1 = str.slice(i + 1);
+            str1.sort();
+            str = str.slice(0, i + 1);
+            str.push(...str1);
+        } 
+       
+    }
+    
+} 
+ 
+
+ 
+
+
+
+
+</script>
+<style>
+html {
+width:100%;
+height: 100%;
+}
+body {
+width: 100%;
+overflow:hidden;
+position: relative;
+}
+  @font-face {
+  font-family: 'font';
+  src: url('font.eot'); /* IE9 Compat Modes */
+  src: url('font.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('font.woff2') format('woff2'), /* Super Modern Browsers */
+  url('font.woff') format('woff'), /* Pretty Modern Browsers */
+  url('font.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-size: 100%;
+  }
+  
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: gray;
+}
+
+.fg--search {
+  background: white;
+  position: relative;
+  width: 300px;
+}
+
+.fg--search input {
+  width: 100%;
+  padding: 20px 60px 20px 20px;
+  display: block;
+}
+
+.fg--search button {
+  background:transparent;
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iNTMuNzQwNDcxbW0iCiAgIGhlaWdodD0iNTMuNzI2OTU1bW0iCiAgIHZpZXdCb3g9IjAgMCA1My43NDA0NzEgNTMuNzI2OTU1IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc5ODMiCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnMKICAgICBpZD0iZGVmczk4MCIgLz4KICA8ZwogICAgIGlkPSJsYXllcjEiCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTk1LjQ3MzM3OCwtNTkuNTA3MzIzKSI+CiAgICA8cGF0aAogICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtzdHJva2Utd2lkdGg6MC4yNjQ1ODMiCiAgICAgICBkPSJtIDEzOS4xMjgzOCwxMTAuNjU0NTkgYyAtMS40Nzk4MiwtMS40MTg4MyAtNC4xMDIyMiwtNC4wOTI0MiAtNS44Mjc1NSwtNS45NDEzMSAtMi45NTIyNCwtMy4xNjM2NSAtMy4xMzY5OCwtMy40MjU2NyAtMy4xMzY5OCwtNC40NDkxNyAwLC0wLjU5ODE0NCAwLjEzMTU2LC0xLjMzMzM1NSAwLjI5MjM1LC0xLjYzMzc5OCAwLjI1MTc0LC0wLjQ3MDM4MSAwLjE0ODUxLC0wLjY5MDEwNyAtMC43NDMxOSwtMS41ODE4MDYgbCAtMS4wMzU1NSwtMS4wMzU1NDQgLTAuNjUyMDksMC41MTI5MzcgYyAtMS4zNjMzLDEuMDcyMzc0IC00LjE2NzkxLDIuNDE2NTQ1IC02LjQ2MDQ4LDMuMDk2MzI4IC0zLjAwNTY4LDAuODkxMjQzIC03LjY4NywxLjAxMTE4MyAtMTAuNDUwNDEsMC4yNjc3NjcgLTYuNDIzNTMsLTEuNzI4MDY4IC0xMS4xNzQxMzIsLTUuNjkxMTkgLTEzLjg2NzU0MywtMTEuNTY4ODA5IC0xLjgwMDY0NywtMy45Mjk0MTEgLTIuMjc1NDY5LC05LjE0MDA4NyAtMS4yMTU4ODEsLTEzLjM0MzAyMiAxLjA2NTgsLTQuMjI3NTY5IDMuNzgwNzIzLC04LjQ4MTAxMiA3LjA4NjYwNCwtMTEuMTAyNTA2IDIuMTA3MzEsLTEuNjcxMDUyIDUuODgwNTksLTMuNDg4NjI2IDguMjYwNzgsLTMuOTc5MTgzIDIuNzY4OCwtMC41NzA2NTEgNy4wNjU4NywtMC41MDYyMTggOS42MDg1LDAuMTQ0MDc1IDMuNzAyMiwwLjk0Njg2MyA3LjA1NTcxLDIuOTI4NTU4IDkuNzE5NzcsNS43NDM3MTcgMS44Mjg0OSwxLjkzMjIwMiAyLjM1NTIsMi42ODM2NTYgMy41NTA4LDUuMDY1OTgyIDEuNDM0OTcsMi44NTkyNyAxLjk5MTc2LDUuMzg4MTkxIDEuOTkxNzYsOS4wNDY1MjkgMCw0LjUxMTE3MyAtMS4wMTY2NCw4LjA0ODcwOCAtMy4yNzgxOCwxMS40MDY5MTEgbCAtMC45NTQ4NywxLjQxNzg4OSAxLjAyMzcxLDEuMDIzNzAyIGMgMC44ODA4OCwwLjg4MDg4OCAxLjA5OTksMC45ODI5MTMgMS41Njk5NiwwLjczMTM0OCAwLjMwMDQ0LC0wLjE2MDc5IDEuMTA0NDgsLTAuMjkyMzQ5IDEuNzg2NzYsLTAuMjkyMzQ5IGggMS4yNDA1MSBsIDQuMjMzMDQsNC4xNjcxODcgYyAyLjMyODE4LDIuMjkxOTU1IDQuOTMyOTMsNC45NzM5MTUgNS43ODgzNSw1Ljk1OTkxNSAxLjQxODczLDEuNjM1MzIgMS41NTUzLDEuOTAxMDggMS41NTUzLDMuMDI2NjIgMCwxLjE5OTA1IC0wLjA2NTgsMS4yOTk3MiAtMi4zMzExOSwzLjU2NTA4IC0yLjMyOTk0LDIuMzI5OTQgLTIuMzMxOTMsMi4zMzEyIC0zLjY5NzQ1LDIuMzMxMiBoIC0xLjM2NjI1IHogTSAxMjAuNzg4OTcsOTYuMjg0ODEzIGMgNi40MDY3MywtMS45NDg3NDEgMTEuMDAyOTMsLTcuMzQ2OTQyIDEyLjAyMDI2LC0xNC4xMTc2OTcgMC44NTc5NCwtNS43MDk5NTggLTEuNzQ3MzIsLTEyLjExMjA2NCAtNi4zODQyNywtMTUuNjg4NTQyIC0zLjE4NjIyLC0yLjQ1NzUzIC02LjUzMDA5LC0zLjU3NDk0NiAtMTAuNjgwOSwtMy41NjkyMTggLTQuNzU5NTQsMC4wMDY2IC04LjcwMDM5LDEuNzQ3MTMyIC0xMi4xNjQwOCw1LjM3MjUzNiAtMi4xMzIwMywyLjIzMTU2NiAtMy41NDUzLDQuNzYxMjU3IC00LjI2Nzg4Myw3LjYzOTMxMSAtMC42NDAzNzYsMi41NTA2MjMgLTAuNDA0NjI3LDcuMjEwOTczIDAuNDg1NDEsOS41OTU3MzUgMi4yNjY3ODMsNi4wNzM1OTMgNy41NjEwNjMsMTAuNDQxNzM0IDEzLjgyOTg4MywxMS40MTA1OTMgMS41NzY5NSwwLjI0MzcyMSA1LjM2NDk1LC0wLjA5NjIzIDcuMTYxNTgsLTAuNjQyNzE4IHogbSAtMTAuMzMxNSwtNS43NTI5NjUgYyAtMC4yNzY3OCwtMC43MjQ2NzMgLTUuNDI5MDMsLTE5LjA5MzA2IC01LjQyOTAzLC0xOS4zNTUxNDYgMCwtMC4xNzI2MTIgMC45NzQxNywtMC4yNzU3NTggMi42MDQ0MywtMC4yNzU3NTggaCAyLjYwNDQ0IGwgMS4xMzUxLDQuMjk5NDc5IGMgMC42MjQzMSwyLjM2NDcxMyAxLjQwMjU4LDUuODQ3MjkyIDEuNzI5NSw3LjczOTA2MiAwLjYyMzg1LDMuNjEwMDcyIDAuNjU2MTQsMy42MTcyNTIgMS4xODk3NCwwLjI2NDU4NCAwLjI0NDU0LC0xLjUzNjQ4MSAxLjUzNjY1LC03LjAxNjY0NiAyLjY2Njg4LC0xMS4zMTA5MzggbCAwLjI2MTE0LC0wLjk5MjE4NyBoIDMuMDA2MzIgMy4wMDYzMiBsIDEuMjE2MzMsNC45NjA5MzcgYyAwLjY2ODk4LDIuNzI4NTE2IDEuNDIwMjIsNi4yMTEwOTQgMS42Njk0Miw3LjczOTA2MyAwLjUwMTYxLDMuMDc1NzExIDAuNDIzMiwzLjE1NzUzOCAxLjI2NzU0LC0xLjMyMjkxNyAwLjYxNjc4LC0zLjI3Mjk1NCAyLjAxODE0LC04LjQ3NzEwNyAyLjI0NDk0LC04LjMzNjkzNCAwLjI4NjU1LDAuMTc3MDk0IDEuMDAyOTcsMi45NTA5MDEgMS4yMDQzMiw0LjY2MjgyNSAwLjM5MzA2LDMuMzQxODE2IC0wLjk5MDIzLDcuODc2NDU4IC0zLjI2NTY5LDEwLjcwNTQxNyAtMS4xNjkyNCwxLjQ1MzY1MyAtMS4zNDgzNSwxLjU3MzM4MiAtMi40NjMwNywxLjY0NjQ1NSBsIC0xLjIwMjE0LDAuMDc4OCAtMC43MTcwMiwtMy4yNTM4MDEgYyAtMS41MjgxOCwtNi45MzQ4MDQgLTIuOTA4MzksLTEyLjY0NjQzNyAtMy4wNTU2LC0xMi42NDQ3ODIgLTAuMDg0Nyw5LjUyZS00IC0wLjYxMDI5LDEuOTk1MjQ4IC0xLjE2ODA0LDQuNDMxNzcgLTAuNTU3NzUsMi40MzY1MjIgLTEuMzY5NTUsNS45NDA4MSAtMS44MDM5OSw3Ljc4NzMwMyBsIC0wLjc4OTg5LDMuMzU3MjYgLTIuODkwMDYsMC4wODIzMiBjIC0yLjE5Mjc4LDAuMDYyNDYgLTIuOTIxODcsLTAuMDAxMSAtMy4wMjE4OSwtMC4yNjI4MTYgeiIKICAgICAgIGlkPSJwYXRoODQ1IiAvPgogIDwvZz4KPC9zdmc+Cg==")
+;
+  background-size: 100% 100%;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 32px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width:32px;
+  height:32px;
+  height:32px;
+  margin:16px;
+  
+}
+
+.fg--search input:focus + button .fa-search {
+  color: red;
+}
+
+
+.base64 {
+}
+</style>
+<!--
+
+
+selected:w.is(":selected")
+Replace to
+selected:w.attr("selected")
+
+
+-->
+
