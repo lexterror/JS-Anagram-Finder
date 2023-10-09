@@ -1,6 +1,8 @@
 # JS-Anagram-Finder
 Anagram Finder in JavaScript
 <br><br>
+Live demo: https://js-anagram-finder.sourceforge.io/index.html
+<br><br>
 Features:
 <br><br>
 -10,000 word english dictionary from another repository<br>
